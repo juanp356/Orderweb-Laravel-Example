@@ -43,8 +43,12 @@ class DatabaseSeeder extends Seeder
             'speciality' => 'Lectura de redes'
         ]);
 
-        Technician::factory(1)->create(); // sin especialudad
+        Technician::factory(1)->create(); // sin especialidad
 
         $this-> call(ActivitySeeder::class);
+        //seeders de prueba
+       // $this->call(TestTechnicianSeeder::class);
+        $this->call(TestActivitySeeder::class);
+
     }
 }

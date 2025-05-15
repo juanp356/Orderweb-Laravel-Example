@@ -17,4 +17,18 @@ class Order extends Model
         'causal_id'
 ];
 
+    public function causal(){
+        return $this->belongsTo(Causal::class,'causal_id');
+    }
+
+    public function observation(){
+         return $this->belongsTo(Observation::class,'observation_id');
+    
+    }
+    public function activities(){
+         return $this->belongsToMany(Activity::class);
+         /*return $this->belongsToMany(Activity::class,'order_activity','order_id','activity_id');*/ //otra forma de hacer si no hay PK Auto
+    
+    }
+
 }
