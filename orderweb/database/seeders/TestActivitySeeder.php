@@ -19,10 +19,10 @@ class TestActivitySeeder extends Seeder
         $activity->description = "Actividad de prueba 3";
         $activity->hours = 2;
 
-        $technician = Technician::where('document',11622333)->first();
+        $technician = Technician::where('document',1248228437)->first();
         $activity->technician_id = $technician->id;
 
-        $type_activity = TypeActivity::where('id',3,)->first();
+        $type_activity = TypeActivity::where("id",3)->first();
         $activity->type_activity_id = $type_activity->id;
         $activity->save();   
     }
