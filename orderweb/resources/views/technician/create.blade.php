@@ -5,7 +5,7 @@
 
     <div class="row">
         <div class="col-lg-12 mb-4">
-            <form action="" method="POST">
+            <form action="{{ route('technician.store') }}" method="POST">
             @csrf
             <div class="row form-group">
                 <div class="col-lg-12 mb-4">
@@ -14,13 +14,17 @@
                 </div>
                 <div class="col-lg-12 mb-4">
                     <label for="name">Nombre</label>
-                    <input type="number" class="form-control" name="document" id="document" required>
+                    <input type="text" class="form-control" name="name" id="name" required>
                 </div>
                 <div class="col-lg-12 mb-4">
                     <label for="speciality">Especialidad</label>
-                    <select name="speciality" id="speciality" class="form-control">
-                        <option value="">Seleccione</option>
-                    </select>
+                     <input list="specialities-list" class="form-control" name="speciality" id="speciality">
+                     <datalist id="specialities-list">
+                        <option>Instalacion de redes</option>
+                        <option>Construccion</option>
+                        <option>Lectura de redes</option>
+                        <option>Plomeria</option>
+                     </datalist>
                 </div>
                 <div class="col-lg-12 mb-4">
                     <label for="phone">Telefono</label>
