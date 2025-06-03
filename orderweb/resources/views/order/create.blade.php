@@ -2,6 +2,7 @@
 @section('title','Crear Orden')
 @section('header','Crear Orden')
 @section('content')
+@include('templates.messages')
 
     <div class="row">
         <div class="col-lg-12 mb-4">
@@ -10,22 +11,23 @@
             <div class="row form-group">
                 <div class="col-lg-12 mb-4">
                     <label for="legalization_date">Fecha legalizacion</label>
-                    <input type="date" class="form-control" name="legalization_date" id="legalization_date" required>
+                    <input type="date" class="form-control" name="legalization_date" id="legalization_date" required value="{{ old('legalization_date') }}">
                 </div>
-                <div class="col-lg-12 mb-4">
+                <div class="col-lg-6 mb-4">
                     <label for="address">Direccion</label>
-                    <input type="text" class="form-control" name="address" id="address" required>
+                    <input type="text" class="form-control" name="address" id="address" required value="{{ old('address') }}">
                 </div>
 
             </div>
             <div class="row form-group">
                 <div class="col-lg-12 mb-4">
                     <label for="City">City</label>
-                    <select name="city" id="city" class="form-control">
-                        <option value="Tulua">Tulua</option>
-                        <option value="Cali">Cali</option>
-                        <option value="Buga">Buga</option>
-                        <option value="Palmira">Palmira</option>
+                    <select name="city" id="city" class="form-control" required value="{{ old('city')}}">
+                        @foreach ($cities as  $city )
+                            <option value="{{ $city['value'] }}" @if (old('city') == $city['name']) selected @endif>
+                                {{ $city['name'] }}
+                            </option>
+                        @endforeach
                     </select>
                       </div>
                     <div class="col-lg-6 mb-4">
@@ -33,16 +35,20 @@
                         <select name="causal_id" id="causal_id" class="form-control">
                             <option value="">Seleccione</option>
                             @foreach ($causals as $causal)
-                                <option value="{{ $causal['id'] }}">{{ $causal['description'] }}</option>
+                                <option value="{{ $causal['id'] }}"
+                                @if (old('causal_id') == $causal['id']) selected @endif>
+                                {{ $causal['description'] }}</option>
                             @endforeach
                         </select>
                     </div>
-                     <div class="col-lg-12 mb-4">
+                     <div class="col-lg-6 mb-4">
                     <label for="observation_id">Observacion</label>
                     <select name="observation_id" id="observation_id" class="form-control">
                         <option value="">Seleccione</option>
                          @foreach ($observations as $observation)
-                                <option value="{{ $observation['id'] }}">{{ $observation['description'] }}</option>
+                                <option value="{{ $observation['id'] }}"
+                                @if (old('observation_id') == $observation['id']) selected @endif>
+                                {{ $observation['description'] }}</option>
                             @endforeach
                     </select>
 
@@ -54,10 +60,11 @@
                     <button type="submit" class="btn btn-primary btn-block"> Guardar</button>
                 </div>
                 <div  class="col-lg-6">
-                     <a href="{{ route('observation.index') }}" class="btn btn-secondary btn-block">Cancelar</a>
+                     <a href="{{ route('order.index') }}" class="btn btn-secondary btn-block">Cancelar</a>
                 </div>
             </div>
             </form>
+            <br>
             <div class="row">
                 <div class="col-lg-12 mb-4">
                     <div class="alert alert-warning" role="alert">

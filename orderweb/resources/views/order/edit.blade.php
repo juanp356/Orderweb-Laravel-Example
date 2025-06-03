@@ -15,6 +15,10 @@
                     <input type="date" class="form-control" name="legalization_date" id="legalization_date" required
                     value="{{ $order['legalization_date'] }}">
                 </div>
+                <div class="col-lg-6 mb-4">
+                    <label for="address">Direccion</label>
+                    <input type="text" class="form-control" name="address" id="address" required value="{{ old('address') }}">
+                </div>
             </div>
             <div class="row form-group">
                 <div class="col-lg-12 mb-4">
