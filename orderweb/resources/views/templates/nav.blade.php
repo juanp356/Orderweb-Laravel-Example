@@ -29,7 +29,9 @@
             </div>
 
             
-                <!-- Nav Item - Pages Collapse Menu -->
+                @can('admin-supervisor')
+                    
+             
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse1"
                     aria-expanded="true" aria-controls="collapse1">
@@ -43,7 +45,10 @@
                         </div>
                     </div>
                 </li> 
-            
+                   @endcan
+
+
+                @can('administrador')
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse2"
                     aria-expanded="true" aria-controls="collapse2">
@@ -56,7 +61,8 @@
                             <a class="collapse-item" href="{{ route('causal.create') }}">Crear</a>
                         </div>
                     </div>
-                </li>             
+                </li>       
+                   
 
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse3"
@@ -71,7 +77,7 @@
                         </div>
                     </div>
                 </li>
-            
+                @endcan
 
             <!-- Divider -->
             <hr class="sidebar-divider"/>
@@ -82,7 +88,7 @@
             </div>
 
             
-                <!-- Nav Item - Pages Collapse Menu -->
+               @can('admin-supervisor')
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse4"
                     aria-expanded="true" aria-controls="collapse4">
@@ -96,7 +102,11 @@
                         </div>
                     </div>
                 </li>
-           
+             @endcan
+
+             @can('administrador')
+                 
+             
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse5"
                     aria-expanded="true" aria-controls="collapse5">
@@ -110,12 +120,14 @@
                         </div>
                     </div>
                 </li>
-           
+           @endcan
 
             <!-- Divider -->
             <hr class="sidebar-divider"/>
 
-           
+           @can('supervisor')
+               
+          
                 <!-- Heading -->
                 <div class="sidebar-heading">
                     Técnicos
@@ -134,7 +146,7 @@
                         </div>
                     </div>
                 </li>
-            
+             @endcan
                 <!-- Heading -->
                 <div class="sidebar-heading">
                     Reportes
