@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CausalController;
 use App\Http\Controllers\ObservationController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TechnicianController;
 use App\Http\Controllers\TypeActivityController;
 use App\Models\Observation;
@@ -132,7 +133,11 @@ Route::middleware(['auth','can:supervisor'])->prefix('technician')->group(functi
 });
 
 
+Route::middleware(['auth','can:administrador'])-> prefix('reports')->group(function(){
+  Route::get('/index', [ReportController::class,'index']) ->name('reports.index');
+  Route::get('/export_technicians', [ReportController::class,'export_technicians'])->name('reports.technicians');
 
+});
 
 
 
