@@ -45,9 +45,44 @@
                             </div>
                         </div>
                     </form>
-
-
-
+            </div>
+         </div>
+    </div>
+</div>
+    <div class="row">
+        <div class="col-lg-12 mb-4">
+            <div class="card shadow">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Reporte de ordenes por rango de fecha</h6>
+                </div>
+                <div class="card-body">
+                    <form action="{{ route('reports.orders_by_date') }}" method="POST">
+                        @csrf
+                        <div class="row form-group">
+                            
+                            <div class="col-lg-5">
+                                <select name="technician_id" id="technician_id" class="form-control" required>
+                                    @foreach ($technicians as $technician)
+                                        <option value="{{ $technician['id'] }}">{{ $technician['name'] }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <br>
+                            <div class="col-lg-2">
+                                <label for="legalization_date_start">Fecha inicio:</label>
+                            </div>
+                            <input type="date" class="form-control" id="legalization_date_start" name="legalization_date_start">
+                            <div class="col-lg-2">
+                                <label for="legalization_date_end">Fecha fin:</label>
+                            </div>
+                            <input type="date" class="form-control" id="legalization_date_end" name="legalization_date_end">
+                            <div class="col-lg-5">    
+                                <button type="submit" class="btn btn-danger btn-block btn-lg col-lg-2" title="PDF">
+                                    <i class="fa-solid fa-file-pdf"></i>
+                                 </button>
+                            </div>
+                        </div>
+                    </form>
             </div>
          </div>
     </div>
